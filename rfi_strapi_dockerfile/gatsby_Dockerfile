@@ -1,0 +1,23 @@
+FROM node:14.20-bullseye AS builder
+
+WORKDIR /
+RUN git clone https://beacon-rafi:vvhzA4N3Qxs633zdMN-B@gitlab.wsq.io/beacon-rafi/rfi-strapi.git
+WORKDIR /rfi-strapi/gatsby/
+COPY . .
+
+RUN npm cache clean --force
+RUN npm install --unsafe-perm
+WORKDIR /rfi-strapi/gatsby/app
+
+RUN npm run build --prefix-paths
+
+
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+RUN rm -rf ./*
+
+COPY --from=builder /rfi-strapi/gatsby/public .
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
