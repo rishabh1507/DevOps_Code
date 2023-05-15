@@ -2,7 +2,7 @@ FROM node:16-alpine
 
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev git
 
-RUN git clone https://beacon-rafi:vvhzA4N3Qxs633zdMN-B@gitlab.wsq.io/beacon-rafi/rfi-strapi.git
+RUN git clone https://<id:pass>/beacon-rafi/rfi-strapi.git
 
 WORKDIR /rfi-strapi/strapi/
 
