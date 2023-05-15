@@ -1,7 +1,7 @@
 FROM node:14.20-bullseye AS builder
 
 WORKDIR /
-RUN git clone https://beacon-rafi:vvhzA4N3Qxs633zdMN-B@gitlab.wsq.io/beacon-rafi/rfi-strapi.git
+RUN git clone https://<id:pass>/beacon-rafi/rfi-strapi.git
 WORKDIR /rfi-strapi/gatsby/
 COPY . .
 
